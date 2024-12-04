@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: plantdex
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - plantdex_network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_USER: user
+      DATABASE_PASSWORD: user_password
+      DATABASE_NAME: plantdex
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - plantdex_network
+
+  model-service:
+    build:
+      context: ./model-service
+    container_name: model-service
+    ports:
+      - "5000:5000"
+    networks:
+      - plantdex_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:3000"
+    networks:
+      - plantdex_network
+    depends_on:
+      - backend
+      - model-service
+
+volumes:
+  mysql_data:
+
+networks:
+  plantdex_network:
+    driver: bridge
