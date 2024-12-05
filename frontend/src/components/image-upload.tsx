@@ -26,40 +26,40 @@ export function ImageUpload({ onPlantAnalyzed }: { onPlantAnalyzed: any }) {
     }
   }
   const diseases = [
-    "Apple Scab",
-    "Bacterial Spot",
-    "Black Rot",
-    "Cedar Apple Rust",
-    "Cercospora Leaf Spot",
-    "Common Rust",
-    "Early Blight",
-    "Esca (Black Measles)",
-    "Healthy",
-    "Late Blight",
-    "Leaf Blight",
-    "Leaf Scorch",
-    "Northern Leaf Blight",
-    "Powdery Mildew",
-    "Septoria Leaf Spot",
-    "Yellow Leaf Curl Virus"
-  ]
+    "Roya de la Manzana",
+    "Manchas Bacterianas",
+    "Podredumbre Negra",
+    "Óxido de Cedro y Manzana",
+    "Manchas Foliares de Cercospora",
+    "Óxido Común",
+    "Mildiu Temprano",
+    "Esca (Sarampión Negro)",
+    "Saludable",
+    "Mildiu Tardío",
+    "Mildiu de la Hoja",
+    "Quemaduras de Hojas",
+    "Mildiu del Norte de la Hoja",
+    "Mildiu Polvoriento",
+    "Manchas Foliares de Septoria",
+    "Virus de Curl de la Hoja Amarilla"
+  ];
+  
   const diseases_by_plant: EnfermedadesPorPlanta[] = [
-    { plant: "Manzana", diseases: ["Apple Scab", "Black Rot", "Cedar Apple Rust", "Healthy"] },
-    { plant: "Pimiento", diseases: ["Bacterial Spot", "Healthy"] },
-    { plant: "Cereza", diseases: ["Powdery Mildew", "Healthy"] },
-    { plant: "Maíz", diseases: ["Cercospora Leaf Spot", "Common Rust", "Northern Leaf Blight", "Healthy"] },
-    { plant: "Uva", diseases: ["Black Rot", "Esca (Black Measles)", "Leaf Blight", "Healthy"] },
-    { plant: "Durazno", diseases: ["Bacterial Spot", "Healthy"] },
-    { plant: "Papa", diseases: ["Early Blight", "Late Blight", "Healthy"] },
-    { plant: "Fresa", diseases: ["Leaf Scorch", "Healthy"] },
+    { plant: "Manzana", diseases: ["Roya de la Manzana", "Podredumbre Negra", "Óxido de Cedro y Manzana", "Saludable"] },
+    { plant: "Pimiento", diseases: ["Manchas Bacterianas", "Saludable"] },
+    { plant: "Cereza", diseases: ["Mildiu Polvoriento", "Saludable"] },
+    { plant: "Maíz", diseases: ["Manchas Foliares de Cercospora", "Óxido Común", "Mildiu del Norte de la Hoja", "Saludable"] },
+    { plant: "Uva", diseases: ["Podredumbre Negra", "Esca (Sarampión Negro)", "Mildiu de la Hoja", "Saludable"] },
+    { plant: "Durazno", diseases: ["Manchas Bacterianas", "Saludable"] },
+    { plant: "Papa", diseases: ["Mildiu Temprano", "Mildiu Tardío", "Saludable"] },
+    { plant: "Fresa", diseases: ["Quemaduras de Hojas", "Saludable"] },
     {
       plant: "Tomate", diseases: [
-        "Bacterial Spot", "Early Blight", "Late Blight", "Leaf Mold", "Septoria Leaf Spot",
-        "Spider Mites", "Target Spot", "Yellow Leaf Curl Virus", "Healthy"
+        "Manchas Bacterianas", "Mildiu Temprano", "Mildiu Tardío", "Mildiu de la Hoja", "Manchas Foliares de Septoria",
+        "Ácaros Rojos", "Manchas de Objetivo", "Virus de Curl de la Hoja Amarilla", "Saludable"
       ]
     }
-  ]
-  
+  ];
 
 
   const analyzePlant = async () => {
@@ -98,6 +98,7 @@ export function ImageUpload({ onPlantAnalyzed }: { onPlantAnalyzed: any }) {
     const mockPlantData = {
       name: family,
       family: family,
+      health: diseases[id],
       isHealthy: true,
       isPoisonous: false,
       hasFruit: false,

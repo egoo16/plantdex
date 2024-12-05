@@ -11,7 +11,8 @@ export function PlantInfo({ plant }: {plant: any}) {
       <CardContent>
         <div className="grid grid-cols-2 gap-4">
           <div>Familia: <Badge variant="outline">{plant.family}</Badge></div>
-          <div>Estado: {plant.isHealthy ? <CheckCircle className="inline text-green-500" /> : <XCircle className="inline text-red-500" />}</div>
+          <div>Estado: <Badge variant="outline">{plant.health}</Badge></div>
+          {/* <div>Estado: {plant.isHealthy ? <CheckCircle className="inline text-green-500" /> : <XCircle className="inline text-red-500" />}</div> */}
           <div>Venenosa: {plant.isPoisonous ? <CheckCircle className="inline text-red-500" /> : <XCircle className="inline text-green-500" />}</div>
           <div>Da frutos: {plant.hasFruit ? <CheckCircle className="inline text-green-500" /> : <XCircle className="inline text-gray-500" />}</div>
           <div>Necesita riego: {plant.needsWatering ? <CheckCircle className="inline text-blue-500" /> : <XCircle className="inline text-gray-500" />}</div>
